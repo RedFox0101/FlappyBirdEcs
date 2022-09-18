@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[System.Serializable]
-public struct SceneData
+public class SceneData:MonoBehaviour
 {
     public int Number;
     public MovablePipeProvider PipePrefab;

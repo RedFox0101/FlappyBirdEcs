@@ -3,26 +3,22 @@ using Leopotam.Ecs;
 
 public class SpawnSystem : MonoBehaviour, IEcsInitSystem
 {
-    private EcsFilter<SceneData> _filter;
+    private SceneData _sceneData=null;
 
     public void Init()
     {
-        foreach (var component in _filter)
-        {
-            ref var sceneData = ref _filter.Get1(component);
-            var spawnPosition = sceneData.SpawnPosition;
+        var spawnPosition = _sceneData.SpawnPosition.position;
 
-            for (int i = 0; i < sceneData.Number; i++)
-            {
-                spawnPosition.position = GetPosition(sceneData, spawnPosition);
-                Instantiate(sceneData.PipePrefab, spawnPosition.position, Quaternion.identity);
-            }
+        for (int i = 0; i < _sceneData.Number; i++)
+        {
+            spawnPosition = GetPosition(_sceneData, spawnPosition);
+            Instantiate(_sceneData.PipePrefab, spawnPosition, Quaternion.identity);
         }
     }
 
-    private  Vector2 GetPosition(SceneData sceneData, Transform spawnPosition)
+    private Vector2 GetPosition(SceneData sceneData, Vector3 spawnPosition)
     {
-        spawnPosition.position = new Vector2(spawnPosition.position.x, sceneData.SpawnPosition.position.y);
-        return new Vector2(spawnPosition.position.x + sceneData.OffsetX, spawnPosition.position.y + Random.Range(sceneData.MinOffsetY, sceneData.MaxOffsetY));   
+        spawnPosition = new Vector2(spawnPosition.x, sceneData.SpawnPosition.position.y);
+        return new Vector2(spawnPosition.x + sceneData.OffsetX, spawnPosition.y + Random.Range(sceneData.MinOffsetY, sceneData.MaxOffsetY));
     }
 }

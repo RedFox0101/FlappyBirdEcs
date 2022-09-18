@@ -4,7 +4,7 @@ using Voody.UniLeo;
 
 sealed class EcsStartup : MonoBehaviour
 {
-    [SerializeField] private SpawnSystem _spawnSystem;
+    [SerializeField] private SceneData _sceneData;
     private EcsWorld _world;
     private EcsSystems _systems;
 
@@ -21,6 +21,8 @@ sealed class EcsStartup : MonoBehaviour
         _world = new EcsWorld();
         _systems = new EcsSystems(_world);
         _systems.ConvertScene();
+        _systems.Inject(_sceneData);
+        _systems.Inject(_systems);
 #if UNITY_EDITOR
         Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(_world);
         Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(_systems);
@@ -29,10 +31,11 @@ sealed class EcsStartup : MonoBehaviour
 
     private void AddSystem()
     {
-        
         _systems.
-            Add(_spawnSystem).
+            Add(new SpawnSystem()).
             Add(new MovablePipeSystem()).
+            Add(new InitPipeSystem(), "Init Pipe").
+            Add(new TeleportSystem()).
             Add(new InputSystem()).
             Add(new MoveSysten());
     }
