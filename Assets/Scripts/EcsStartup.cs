@@ -4,6 +4,7 @@ using Voody.UniLeo;
 
 sealed class EcsStartup : MonoBehaviour
 {
+    [SerializeField] private SpawnSystem _spawnSystem;
     private EcsWorld _world;
     private EcsSystems _systems;
 
@@ -28,7 +29,11 @@ sealed class EcsStartup : MonoBehaviour
 
     private void AddSystem()
     {
-        _systems.Add(new InputSystem()).
+        
+        _systems.
+            Add(_spawnSystem).
+            Add(new MovablePipeSystem()).
+            Add(new InputSystem()).
             Add(new MoveSysten());
     }
 
