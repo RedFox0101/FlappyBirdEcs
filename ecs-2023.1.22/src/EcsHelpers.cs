@@ -24,6 +24,8 @@ namespace Leopotam.Ecs {
             Count = 0;
         }
 
+        
+
         [MethodImpl (MethodImplOptions.AggressiveInlining)]
         public void Add (T item) {
             if (Items.Length == Count) {

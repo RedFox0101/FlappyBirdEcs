@@ -3,7 +3,7 @@ using Leopotam.Ecs;
 
 public class MovablePipeSystem : IEcsRunSystem
 {
-    private EcsFilter<MovablePipeComponent> _filter;
+    private EcsFilter<MovablePipeComponent>.Exclude<TerminationComponent> _filter;
 
     public void Run()
     {

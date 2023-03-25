@@ -3,7 +3,7 @@ using Leopotam.Ecs;
 
 public class MoveSysten : IEcsRunSystem
 {
-    private EcsFilter<MovableComponent, InputEvent> _filter=null;
+    private EcsFilter<MovableComponent, InputEvent>.Exclude<TerminationComponent>_filter=null;
 
     public void Run()
     {

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class InitPipeSystem : IEcsRunSystem
 {
+    private const string KEY_INITSYSTEM = "Init Pipe";
+
     private EcsFilter<MovablePipeComponent> _filter;
     private EcsSystems _system = null;
 
@@ -15,7 +17,7 @@ public class InitPipeSystem : IEcsRunSystem
             ref var pipeEntity = ref _filter.GetEntity(component);
             pipe.SetEntity(pipeEntity);
         }
-        var idx = _system.GetNamedRunSystem("Init Pipe");
+        var idx = _system.GetNamedRunSystem(KEY_INITSYSTEM);
         _system.SetRunSystemState(idx, false);
     }
 }

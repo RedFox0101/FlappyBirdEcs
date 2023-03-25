@@ -13,6 +13,3 @@ public class ScoreSystem : IEcsRunSystem
         }
     }
 }
-
-
-public struct EventPassedPipe : IEcsIgnoreInFilter { }
