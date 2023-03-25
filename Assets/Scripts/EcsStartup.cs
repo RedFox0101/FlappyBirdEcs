@@ -4,8 +4,10 @@ using Voody.UniLeo;
 
 sealed class EcsStartup : MonoBehaviour
 {
-    [SerializeField] private SceneData _sceneData;
-    private EcsWorld _world;
+    [SerializeField] private PipeDataMove _sceneData;
+    [SerializeField] private ScoreView _scoreView;
+
+    public static EcsWorld World;
     private EcsSystems _systems;
 
     void Start()
@@ -18,15 +20,22 @@ sealed class EcsStartup : MonoBehaviour
 
     private void InitEcs()
     {
-        _world = new EcsWorld();
-        _systems = new EcsSystems(_world);
+        World = new EcsWorld();
+        _systems = new EcsSystems(World);
         _systems.ConvertScene();
-        _systems.Inject(_sceneData);
-        _systems.Inject(_systems);
+        InjectFields();
+
 #if UNITY_EDITOR
-        Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(_world);
+        Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(World);
         Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(_systems);
 #endif
+    }
+
+    private void InjectFields()
+    {
+        _systems.Inject(_sceneData);
+        _systems.Inject(_systems);
+        _systems.Inject(_scoreView);
     }
 
     private void AddSystem()
@@ -37,7 +46,9 @@ sealed class EcsStartup : MonoBehaviour
             Add(new InitPipeSystem(), "Init Pipe").
             Add(new TeleportSystem()).
             Add(new InputSystem()).
-            Add(new MoveSysten());
+            Add(new MoveSysten()).
+            Add(new ScoreSystem());
+              
     }
 
     private void AddOneFrameComponent()
@@ -56,8 +67,8 @@ sealed class EcsStartup : MonoBehaviour
         {
             _systems.Destroy();
             _systems = null;
-            _world.Destroy();
-            _world = null;
+            World.Destroy();
+            World = null;
         }
     }
 }

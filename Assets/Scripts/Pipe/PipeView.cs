@@ -7,7 +7,6 @@ public class PipeView : MonoBehaviour
 
     public void SetEntity(EcsEntity entity)
     {
-        Debug.Log(entity);
         _entity = entity;
     }
 

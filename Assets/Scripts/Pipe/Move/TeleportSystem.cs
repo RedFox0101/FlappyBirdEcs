@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TeleportSystem : IEcsRunSystem
 {
-    private SceneData _sceneData = null;
+    private PipeDataMove _sceneData = null;
     private EcsFilter<MovablePipeComponent, TriggerEvent> _filter;
 
     public void Run()
@@ -17,7 +17,7 @@ public class TeleportSystem : IEcsRunSystem
         }
     }
 
-    private Vector2 GetPosition(SceneData sceneData, Transform spawnPosition)
+    private Vector2 GetPosition(PipeDataMove sceneData, Transform spawnPosition)
     {
         spawnPosition.position = sceneData.SpawnPosition.position;
         return new Vector2(spawnPosition.position.x, spawnPosition.position.y + Random.Range(sceneData.MinOffsetY, sceneData.MaxOffsetY));

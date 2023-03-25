@@ -10,7 +10,6 @@ public class InitPipeSystem : IEcsRunSystem
     {
         foreach (var component in _filter)
         {
-            Debug.Log("Init");
             ref var transform = ref _filter.Get1(component).Transform;
             var pipe = transform.GetComponent<PipeView>();
             ref var pipeEntity = ref _filter.GetEntity(component);

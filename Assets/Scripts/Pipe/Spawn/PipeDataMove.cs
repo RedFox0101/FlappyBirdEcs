@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class SceneData:MonoBehaviour
+[CreateAssetMenu(fileName ="PipeData")]
+public class PipeDataMove:ScriptableObject
 {
-    public int Number;
+    public int NumberPipeSpawn;
     public MovablePipeProvider PipePrefab;
     public Transform SpawnPosition;
     public float OffsetX;
