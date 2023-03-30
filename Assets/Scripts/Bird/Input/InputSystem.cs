@@ -12,7 +12,6 @@ public class InputSystem : IEcsRunSystem
             
             foreach (var component in _filter)
             {
-                Debug.Log("Touch");
                 ref var entity = ref _filter.GetEntity(component);
                 entity.Get<InputEvent>();
             }

@@ -166,7 +166,6 @@ GameObject:
   - component: {fileID: 164527140706922361}
   - component: {fileID: 1954464744907406488}
   - component: {fileID: 7165958234511640444}
-  - component: {fileID: -3874435526563082004}
   - component: {fileID: 3170094704670043190}
   - component: {fileID: 4331006324676039451}
   - component: {fileID: 5130521438960658790}
@@ -210,7 +209,6 @@ MonoBehaviour:
   value:
     Speed: 2
     Transform: {fileID: 164527140706922361}
-    BoxCollider2D: {fileID: 4331006324676039451}
 --- !u!114 &7165958234511640444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,19 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863c7f7460b2b49abb4fa9a7ff9cb180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  convertMode: 0
---- !u!114 &-3874435526563082004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3653131148236531895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b809bf2accad3049bcfc6e67d46c1c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  convertMode: 2
 --- !u!61 &3170094704670043190
 BoxCollider2D:
   m_ObjectHideFlags: 0

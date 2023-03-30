@@ -7,8 +7,6 @@ sealed class EcsStartup : MonoBehaviour
     [SerializeField] private PipeDataMove _sceneData;
     [SerializeField] private ScoreView _scoreView;
 
-    private const string KEY_INITSYSTEM = "Init Pipe";
-
     private  EcsWorld _world;
     private EcsSystems _systems;
 
@@ -45,13 +43,12 @@ sealed class EcsStartup : MonoBehaviour
         _systems.
             Add(new SpawnSystem()).
             Add(new MovablePipeSystem()).
-            Add(new InitPipeSystem(), KEY_INITSYSTEM).
+            Add(new DeadSystem()).
             Add(new TeleportSystem()).
             Add(new InputSystem()).
             Add(new MoveSysten()).
             Add(new BirdRotationSystem()).
             Add(new ScoreSystem()).
-            Add(new DeadSystem()).
             Add(new AnimatorDieSystem());
              
     }

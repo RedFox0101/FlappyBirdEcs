@@ -1755,6 +1755,7 @@ GameObject:
   - component: {fileID: 1631226687}
   - component: {fileID: 1631226688}
   - component: {fileID: 1631226689}
+  - component: {fileID: 1631226690}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Untagged
@@ -1940,6 +1941,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     Animator: {fileID: 1631226688}
+--- !u!114 &1631226690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631226680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9559b24eadb154040adbc976f3d88eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    topRotation: {x: 0, y: 0, z: 0.17364818, w: 0.9848077}
+    buttomRotation: {x: 0, y: 0, z: -0.17364818, w: 0.9848077}
+    Speed: 3
+    Transform: {fileID: 1631226682}
 --- !u!1 &1683822979
 GameObject:
   m_ObjectHideFlags: 0

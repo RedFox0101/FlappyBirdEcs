@@ -34,6 +34,7 @@ namespace Voody.UniLeo
 
         public void Run()
         {
+            
             foreach (var i in _filter)
             {
                 ref var entity = ref _filter.GetEntity(i);
@@ -66,6 +67,7 @@ namespace Voody.UniLeo
                     {
                         // Adding Component to entity
                         entityComponent.Convert(entity);
+                        if (convertComponent.convertMode == ConvertMode.ConvertAndSave) return;
                         GameObject.Destroy(component);
                     }
                 }

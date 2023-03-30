@@ -11,7 +11,7 @@ public class MoveSysten : IEcsRunSystem
         {
             ref var rigidbody = ref _filter.Get1(component).Rigidbody;
             ref var force = ref _filter.Get1(component).Force;
-            Debug.Log(Vector2.up * force);
+          
             rigidbody.velocity = Vector2.up * force;
         }
     }
