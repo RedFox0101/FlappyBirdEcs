@@ -1,14 +1,13 @@
 using Leopotam.Ecs;
 using UnityEngine;
-
+using Voody.UniLeo;
 public class DeadZone : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out BirdView bird))
-        {
-        
-            var enity = EcsStartup.World.NewEntity();
+        if (collision.TryGetComponent(out BirdView bird))
+        {        
+            var enity = WorldHandler.GetWorld().NewEntity();
             enity.Get<EventDead>();
         }
     }

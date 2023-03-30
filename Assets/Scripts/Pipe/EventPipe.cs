@@ -1,13 +1,12 @@
 using UnityEngine;
 using Leopotam.Ecs;
+using Voody.UniLeo;
+
 public class EventPipe : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("D");
-
-        var newEnity = EcsStartup.World.NewEntity();
+    {        
+        var newEnity = WorldHandler.GetWorld().NewEntity();
         newEnity.Get<EventPassedPipe>();
-
     }
 }

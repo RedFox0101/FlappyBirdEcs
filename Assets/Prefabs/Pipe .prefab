@@ -210,6 +210,7 @@ MonoBehaviour:
   value:
     Speed: 2
     Transform: {fileID: 164527140706922361}
+    BoxCollider2D: {fileID: 4331006324676039451}
 --- !u!114 &7165958234511640444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +246,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 5.176755}
@@ -271,7 +272,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -5.1288776}

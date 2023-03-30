@@ -9,7 +9,7 @@ sealed class EcsStartup : MonoBehaviour
 
     private const string KEY_INITSYSTEM = "Init Pipe";
 
-    public static EcsWorld World;
+    private  EcsWorld _world;
     private EcsSystems _systems;
 
     void Start()
@@ -22,13 +22,13 @@ sealed class EcsStartup : MonoBehaviour
 
     private void InitEcs()
     {
-        World = new EcsWorld();
-        _systems = new EcsSystems(World);
+        _world = new EcsWorld();
+        _systems = new EcsSystems(_world);
         _systems.ConvertScene();
         InjectFields();
 
 #if UNITY_EDITOR
-        Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(World);
+        Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(_world);
         Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(_systems);
 #endif
     }
@@ -49,8 +49,10 @@ sealed class EcsStartup : MonoBehaviour
             Add(new TeleportSystem()).
             Add(new InputSystem()).
             Add(new MoveSysten()).
+            Add(new BirdRotationSystem()).
             Add(new ScoreSystem()).
-            Add(new DeadSystem());
+            Add(new DeadSystem()).
+            Add(new AnimatorDieSystem());
              
     }
 
@@ -70,8 +72,8 @@ sealed class EcsStartup : MonoBehaviour
         {
             _systems.Destroy();
             _systems = null;
-            World.Destroy();
-            World = null;
+            _world.Destroy();
+            _world = null;
         }
     }
 }

@@ -7,7 +7,7 @@ public class ScoreSystem : IEcsRunSystem
     {
         foreach (var eventPipe in _filter)
         {
-            _scoreView.OnPassedPipe();
+            _scoreView.AddScore();
             ref var entity = ref _filter.GetEntity(eventPipe);
             entity.Del<EventPassedPipe>();
         }
